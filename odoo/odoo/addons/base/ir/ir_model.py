@@ -1023,8 +1023,6 @@ class IrModelData(models.Model):
         Return (id, res_model, res_id) or raise ValueError if not found
         """
         module, name = xmlid.split('.', 1)
-        if module == 'base':
-            module = "base_data"
         xid = self.search([('module', '=', module), ('name', '=', name)])
         if not xid:
             print "First could not find %s, %s" % (module, name)
