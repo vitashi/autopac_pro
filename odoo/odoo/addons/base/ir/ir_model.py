@@ -1025,12 +1025,12 @@ class IrModelData(models.Model):
         module, name = xmlid.split('.', 1)
         xid = self.search([('module', '=', module), ('name', '=', name)])
         if not xid:
-            print "could not find %s, %s" % (module, name)
+            print "First could not find %s, %s" % (module, name)
             raise ValueError('External ID not found in the system: %s' % xmlid)
         # the sql constraints ensure us we have only one result
         res = xid.read(['model', 'res_id'])[0]
         if not res['res_id']:
-            print "could not find %s, %s" % (module, name)
+            print "Second could not find %s, %s" % (module, name)
             raise ValueError('External ID not found in the system: %s' % xmlid)
         return res['id'], res['model'], res['res_id']
 
